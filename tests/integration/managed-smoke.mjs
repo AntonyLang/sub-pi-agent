@@ -8,7 +8,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
 
-const root = fileURLToPath(new URL('../../', import.meta.url)).replaceAll('\\','/');
+const root = (process.env.PI_TEST_PACKAGE_ROOT ?? fileURLToPath(new URL('../../', import.meta.url))).replaceAll('\\','/');
 const workspace = process.env.PI_TEST_WORKSPACE ?? tmpdir();
 const fixture = path.join(workspace, `sub-pi-agent-test-${randomUUID()}`);
 const agentDir = path.join(fixture, 'pi-settings');
