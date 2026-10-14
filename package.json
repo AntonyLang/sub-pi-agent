@@ -1,0 +1,32 @@
+{
+  "name": "sub-pi-agent",
+  "version": "0.1.0",
+  "description": "A portable MCP server for persistent Pi agents, task handoffs and bounded waiting",
+  "license": "MIT",
+  "type": "module",
+  "bin": { "sub-pi-agent": "bin/cli.js" },
+  "files": ["bin/cli.js", "bin/server", "README.md", "LICENSE", "examples"],
+  "engines": { "node": ">=22.19.0" },
+  "repository": { "type": "git", "url": "git+https://github.com/AntonyLang/sub-pi-agent.git" },
+  "homepage": "https://github.com/AntonyLang/sub-pi-agent#readme",
+  "bugs": { "url": "https://github.com/AntonyLang/sub-pi-agent/issues" },
+  "keywords": ["mcp", "pi", "agent", "codex", "subagent", "orchestration"],
+  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org" },
+  "scripts": {
+    "build": "tsc",
+    "start": "node bin/cli.js",
+    "test": "vitest run",
+    "test:integration": "node tests/integration/managed-smoke.mjs",
+    "check:package": "node scripts/check-package.mjs",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "1.2.0",
+    "@modelcontextprotocol/sdk": "^1.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.3"
+  }
+}

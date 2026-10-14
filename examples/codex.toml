@@ -1,0 +1,11 @@
+# Add to ~/.codex/config.toml. Pass the task's absolute cwd to pi_spawn_agent.
+[mcp_servers.pi]
+command = "npx"
+args = ["-y", "sub-pi-agent@0.1.0"]
+startup_timeout_sec = 120
+tool_timeout_sec = 600
+
+# On Windows, if launching npx fails, use command = "npx.cmd".
+# Optional: use a separate registry instead of the default beneath Pi configuration.
+# [mcp_servers.pi.env]
+# PI_AGENTS_DIR = "/absolute/path/to/private/sub-pi-agent/agents"

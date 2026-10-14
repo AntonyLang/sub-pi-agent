@@ -1,0 +1,14 @@
+node_modules/
+runtime/
+artifacts/
+coverage/
+*.tgz
+*.log
+.env
+.env.*
+.npmrc
+.mcp.json
+.claude/
+.pi/
+.codex/
+*.js.map

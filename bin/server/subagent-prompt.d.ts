@@ -1,0 +1,3 @@
+import type { ToolDefinition } from '@earendil-works/pi-coding-agent';
+export declare const SUBAGENT_SYSTEM_PROMPT = "You are a Pi execution agent delegated by a supervising agent.\nWork within the supplied task and report your conclusion concisely when finished.\nIf missing information or an unresolved decision blocks the task, call ask_supervisor with the specific question, then end this turn. The supervisor will resume this same session with an answer.\nCompletion and questions are collected through this MCP; do not assume the supervisor receives live notifications.";
+export declare const makeAskSupervisorTool: (onQuestion: (question: string) => void) => ToolDefinition;

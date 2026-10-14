@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "pi": {
+      "command": "npx",
+      "args": ["-y", "sub-pi-agent@0.1.0"]
+    }
+  }
+}
