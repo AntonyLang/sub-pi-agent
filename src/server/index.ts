@@ -89,3 +89,4 @@ const cleanup = async () => {
 server.onclose = () => { void cleanup() }
 process.on('SIGINT', () => { void cleanup() })
 process.on('SIGTERM', () => { void cleanup() })
+process.stdin.once('end', () => { void cleanup() })

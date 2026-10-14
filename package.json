@@ -1,17 +1,42 @@
 {
   "name": "sub-pi-agent",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A portable MCP server for persistent Pi agents, task handoffs and bounded waiting",
   "license": "MIT",
   "type": "module",
-  "bin": { "sub-pi-agent": "bin/cli.js" },
-  "files": ["bin/cli.js", "bin/server", "README.md", "LICENSE", "examples"],
-  "engines": { "node": ">=22.19.0" },
-  "repository": { "type": "git", "url": "git+https://github.com/AntonyLang/sub-pi-agent.git" },
+  "bin": {
+    "sub-pi-agent": "bin/cli.js"
+  },
+  "files": [
+    "bin/cli.js",
+    "bin/server",
+    "README.md",
+    "LICENSE",
+    "examples"
+  ],
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonyLang/sub-pi-agent.git"
+  },
   "homepage": "https://github.com/AntonyLang/sub-pi-agent#readme",
-  "bugs": { "url": "https://github.com/AntonyLang/sub-pi-agent/issues" },
-  "keywords": ["mcp", "pi", "agent", "codex", "subagent", "orchestration"],
-  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org" },
+  "bugs": {
+    "url": "https://github.com/AntonyLang/sub-pi-agent/issues"
+  },
+  "keywords": [
+    "mcp",
+    "pi",
+    "agent",
+    "codex",
+    "subagent",
+    "orchestration"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node bin/cli.js",

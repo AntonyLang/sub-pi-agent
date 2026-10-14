@@ -13,7 +13,7 @@ A standalone stdio MCP server that delegates work to persistent [Pi](https://git
 需要 **Node.js ≥22.19.0**，以及已经配置模型和认证的 Pi。服务内置 Pi SDK 1.2.0，读取同一套 Pi 配置；不会调用另一个全局安装的 Pi CLI。尚未配置 Pi 时，先安装官方 Pi CLI，运行 `pi`，使用 `/login` 和 `/model` 完成配置。
 
 ```sh
-npx -y sub-pi-agent@0.1.0 --help
+npx -y sub-pi-agent@0.1.1 --help
 ```
 
 ### Codex
@@ -23,12 +23,14 @@ npx -y sub-pi-agent@0.1.0 --help
 ```toml
 [mcp_servers.pi]
 command = "npx"
-args = ["-y", "sub-pi-agent@0.1.0"]
+args = ["-y", "sub-pi-agent@0.1.1"]
 startup_timeout_sec = 120
 tool_timeout_sec = 600
 ```
 
 Windows 如果客户端不能启动 `npx`，把 `command` 改成 `"npx.cmd"`。首次 npx 下载可能较慢；后续可使用全局安装，或直接运行源码目录里的 `node bin/cli.js`。
+
+如果 npm 使用镜像源且新包尚未同步，可在参数中加入 `--registry=https://registry.npmjs.org`，例如 `npx -y --registry=https://registry.npmjs.org sub-pi-agent@0.1.1`；无需更改全局 npm 设置。
 
 `tool_timeout_sec` 要大于最长等待时间。此处 600 秒覆盖 `pi_wait_agent` 最长 5 分钟。请在派发任务时显式传入项目的绝对 `cwd`，避免客户端启动 MCP 时的工作目录影响任务。
 
@@ -39,7 +41,7 @@ Windows 如果客户端不能启动 `npx`，把 `command` 改成 `"npx.cmd"`。�
   "mcpServers": {
     "pi": {
       "command": "npx",
-      "args": ["-y", "sub-pi-agent@0.1.0"]
+      "args": ["-y", "sub-pi-agent@0.1.1"]
     }
   }
 }
@@ -56,7 +58,7 @@ npm ci --ignore-scripts
 node bin/cli.js --help
 ```
 
-仓库包含编译产物；开发修改源码后运行 `npm run build`。GitHub Release 的 `.tgz` 与 npm 包使用同一份打包规则，可执行 `npm install -g ./sub-pi-agent-0.1.0.tgz --ignore-scripts` 安装。
+仓库包含编译产物；开发修改源码后运行 `npm run build`。GitHub Release 的 `.tgz` 与 npm 包使用同一份打包规则，可执行 `npm install -g ./sub-pi-agent-0.1.1.tgz --ignore-scripts` 安装。
 
 ## 任务流程
 

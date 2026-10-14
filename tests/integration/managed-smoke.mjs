@@ -98,6 +98,16 @@ async function completed(c,agent) {
 }
 
 try {
+  const eofClient=await connect();
+  const eofProcess=eofClient.transport._process;
+  const eofExit=new Promise((resolve,reject)=>{
+    const timeout=setTimeout(()=>reject(new Error('MCP did not exit after stdin EOF')),5000);
+    eofProcess.once('exit',(code,signal)=>{clearTimeout(timeout);resolve({code,signal})});
+  });
+  eofProcess.stdin.end();
+  assert.deepEqual(await eofExit,{code:0,signal:null});
+  await eofClient.close();
+  record('stdin-EOF-unloads-and-stops-the-MCP-process');
   const a=await connect();
   const tools=(await a.client.listTools()).tools;
   for(const name of ['pi_spawn_agent','pi_list_agents','pi_continue_agent','pi_release_agent','pi_get_result','pi_wait_agent'])assert.ok(tools.some(t=>t.name===name));
